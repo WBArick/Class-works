@@ -1,36 +1,28 @@
 #include<stdio.h>
-#define TARGET 9
-#define SIZE 5
+int linearsearch(int array[], int size, int target);
 int main(void)
 {
-    int array[SIZE];
-    int result;
-    printf("Enter %d numbers to predict the target value:", SIZE);
-    int i;
-    for(i=0; i<SIZE ; i++)
+    int values[5] = {83, 29, 94, 67, 12};
+    int result = linearsearch(values, 5, 67);
+    if(result != -1)
     {
-        scanf("%d", &array[i]);
+        printf("Found 67 at index %d\n", result);
     }
-    int j;
-    for(j = 0; j<SIZE; j++)
+    else
     {
-        if(array[j]==TARGET)
-        {
-            result = 1;
-            break;
-        }
-        else
-        {
-            result = 0;
-        }
-    }
-    if(result == 1)
-    {
-        printf("Target value found at index %d", j+1);
-    }
-    else if(result == 0)
-    {
-        printf("Not found.");
+        printf("67 was not found\n");
     }
     return 0;
+}
+int linearsearch(int array[], int size, int target)
+{
+    int i;
+    for(i = 1; i < size; i++)
+    {
+        if(array[i] == target)
+        {
+            return i; //If the target is enough than it will return the value and imediately exit the loop 
+        }
+    }
+    return -1;
 }
